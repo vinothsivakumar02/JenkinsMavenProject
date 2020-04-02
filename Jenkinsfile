@@ -5,13 +5,13 @@ pipeline {
 			steps {
 				parallel(
 				      a: {
-					bat "mvn clean"
+					echo "mvn clean"
 				      },
 				      b: {
-					bat "mvn test"
+					echo "mvn test"
 				      },
 				      c: {
-					bat "mvn package"
+					echo "mvn package"
 				      }
 				)
 			}
@@ -25,7 +25,7 @@ pipeline {
 		}
 		stage("Email Build Status"){
 			steps {
-				mail body: "${env.JOB_NAME}  - Build # ${env.BUILD_NUMBER}  - ${currentBuild.currentResult} \n\nCheck console output at ${env.BUILD_URL} to view the results.", subject: "${env.JOB_NAME}  - Build # ${env.BUILD_NUMBER}  - ${currentBuild.currentResult}!!", to: 'renju.jenkins.training@gmail.com'
+				mail body: "${env.JOB_NAME}  - Build # ${env.BUILD_NUMBER}  - ${currentBuild.currentResult} \n\nCheck console output at ${env.BUILD_URL} to view the results.", subject: "${env.JOB_NAME}  - Build # ${env.BUILD_NUMBER}  - ${currentBuild.currentResult}!!", to: 'vinothsiva@gmail.com'
 			}
 		}
 	}
